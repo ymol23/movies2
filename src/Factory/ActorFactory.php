@@ -50,6 +50,7 @@ final class ActorFactory extends ModelFactory
             'birthday' => self::faker()->dateTimeBetween('-100 years', 2018-01-01),
             'firstname' => self::faker()->firstName(),
             'lastname' => self::faker()->lastName(),
+            'movieID' => self::faker()->lastName(),
         ];
     }
 

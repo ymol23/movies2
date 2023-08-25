@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MovieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,14 @@ class Movie
 
     #[ORM\Column]
     private ?float $rating = null;
+
+    #[ORM\ManyToMany(targetEntity: Actor::class, inversedBy: 'movies')]
+    private Collection $actor;
+
+    public function __construct()
+    {
+        $this->actor = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +85,30 @@ class Movie
     public function setRating(float $rating): static
     {
         $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Actor>
+     */
+    public function getActor(): Collection
+    {
+        return $this->actor;
+    }
+
+    public function addActor(Actor $actor): static
+    {
+        if (!$this->actor->contains($actor)) {
+            $this->actor->add($actor);
+        }
+
+        return $this;
+    }
+
+    public function removeActor(Actor $actor): static
+    {
+        $this->actor->removeElement($actor);
 
         return $this;
     }
