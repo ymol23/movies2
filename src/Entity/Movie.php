@@ -31,6 +31,9 @@ class Movie
     #[ORM\ManyToMany(targetEntity: Actor::class, inversedBy: 'movies')]
     private Collection $actor;
 
+
+
+
     public function __construct()
     {
         $this->actor = new ArrayCollection();
@@ -112,4 +115,12 @@ class Movie
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->name;
+    }
+
+
+
+
 }
