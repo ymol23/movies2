@@ -47,7 +47,7 @@ final class ActorFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'birthday' => self::faker()->dateTimeBetween(1850, 2018),
+            'birthday' => self::faker()->dateTimeBetween('-100 years', 2018-01-01),
             'firstname' => self::faker()->firstName(),
             'lastname' => self::faker()->lastName(),
         ];

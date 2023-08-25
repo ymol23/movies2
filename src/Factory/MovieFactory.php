@@ -49,10 +49,10 @@ final class MovieFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'duration' => self::faker()->time(format: 'H:i:s'), // TODO add TIME type manually
+            'duration' => new \DateTime('02:15:00'), // TODO add TIME type manually
             'name' => self::faker()->country(),                 // Quasi als Ersatz für Filmname
             'rating' => self::faker()->randomFloat(1,1.0,10.0),
-            'year' => self::faker()->numberBetween(1945,2023)
+            'year' => self::faker()->numberBetween(1980,2023)
         ];
     }
 
